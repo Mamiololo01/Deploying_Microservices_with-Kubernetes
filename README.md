@@ -50,6 +50,8 @@ Additionally, you will need to configure your security groups for the following 
 
 Once our instance is created, we need to connect to it, begin updating our packages and install MicroK8s:
 
+<img width="993" alt="Screenshot 2023-03-31 at 17 27 29" src="https://user-images.githubusercontent.com/67044030/229200934-911f92ba-4f7e-4813-bda9-125f5ae597e5.png">
+
 
 Once in our shell, we need to update our packages and install microK8s. The “sudo snap install microk8s — classic” command does the following:
 
