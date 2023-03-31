@@ -110,6 +110,8 @@ Next, set a username and password. I used the user name ‘ubuntu’ and passwor
 
 kubectl config set-credentials ubuntu --token=123456789
 
+<img width="714" alt="Screenshot 2023-03-31 at 17 46 58" src="https://user-images.githubusercontent.com/67044030/229204256-2537a968-fe9a-40bc-800a-c9113568916a.png">
+
 Next, name our context. I choose ‘first_context’. Addtionally, you need to set the cluster name and username that you used in the previous steps.
 
 kubectl config set-context first_context --cluster=my_web_server --user=ubuntu
