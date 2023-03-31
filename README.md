@@ -84,6 +84,8 @@ When I installed microK8s on my instance, I had no configuration file so I had t
 
 mkdir -p $HOME/.kube
 
+<img width="726" alt="Screenshot 2023-03-31 at 17 43 04" src="https://user-images.githubusercontent.com/67044030/229203679-d9a05759-8f5d-4d3e-8d5a-8254e45418eb.png">
+
 sudo cp -i /var/snap/microk8s/current/credentials/client.config $HOME/.kube/config #Creates a new configure file
 
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
