@@ -46,6 +46,8 @@ Make sure to select your own key-pair or create your own, enable a public-ip add
 
 Additionally, you will need to configure your security groups for the following ports. Our goal is to make our cluster work first. We can always tighten it up before deploying to production later.
 
+<img width="959" alt="Screenshot 2023-03-31 at 17 26 47" src="https://user-images.githubusercontent.com/67044030/229200781-c3f76477-f283-4e51-b770-e3f8970d7949.png">
+
 Once our instance is created, we need to connect to it, begin updating our packages and install MicroK8s:
 
 
