@@ -39,6 +39,8 @@ For this reason, I will be deploying a t3.medium instance so that the installati
 
 Make sure to select your own key-pair or create your own, enable a public-ip address, and configure your subnet and VPC correctly. Addtionally, MicroK8s requires at least 20Gbs of disc space, I pushed mine to the three-tier limit of 30 just to be safe.
 
+<img width="1156" alt="Screenshot 2023-03-31 at 17 16 06" src="https://user-images.githubusercontent.com/67044030/229200355-78222b18-22b7-4f6d-a9ae-88f81d09582b.png">
+
 
 Additionally, you will need to configure your security groups for the following ports. Our goal is to make our cluster work first. We can always tighten it up before deploying to production later.
 
