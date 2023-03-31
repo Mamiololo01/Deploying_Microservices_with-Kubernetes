@@ -37,4 +37,73 @@ At least 20GB of disk space
 
 For this reason, I will be deploying a t3.medium instance so that the installation and orcastration runs smoothly and as expected. When I tried running on a smaller instance the installation consistently failed.
 
+Make sure to select your own key-pair or create your own, enable a public-ip address, and configure your subnet and VPC correctly. Addtionally, MicroK8s requires at least 20Gbs of disc space, I pushed mine to the three-tier limit of 30 just to be safe.
+
+
+Additionally, you will need to configure your security groups for the following ports. Our goal is to make our cluster work first. We can always tighten it up before deploying to production later.
+
+Once our instance is created, we need to connect to it, begin updating our packages and install MicroK8s:
+
+
+Once in our shell, we need to update our packages and install microK8s. The “sudo snap install microk8s — classic” command does the following:
+
+sudo — runs the command with administrative privileges
+snap — snap packages are self-contained software that includes all dependencies
+install — the command used to install a snap package
+microk8s — the name of the snap package being installed
+— classic — an option that allows the package to access system resources and perform privilege operations, which makes it possible to install and run MicroK8s on the host operating system
+
+Next, we will change our permissions to allow user “ubuntu” to run administrative MicroK8 commands without having to use the ‘sudo’ command
+
+In order for the these effects to take place, we must exit and re-enter our shell by logging out and back into our instance via SSH.
+
+Step 2 — Setting up our IDE on our Instance for MicroK8s
+Once we log back in, we next need to continue our configuration of our Kubernetes environment
+
+First, let’s check to see if we have a valid configuration file. By default, MicroK8s does not install with one. We can check if this is our case by running the “kubectl config view” command:
+
+When I installed microK8s on my instance, I had no configuration file so I had to create one using the following commands:
+
+mkdir -p $HOME/.kube
+sudo cp -i /var/snap/microk8s/current/credentials/client.config $HOME/.kube/config #Creates a new configure file
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+These commands create the $HOME/.kube directory if it does not already exist, copy the MicroK8s configuration file to the $HOME/.kube/config file, and change the owner of the $HOME/.kube/config file to the current user. This allows you to use the kubectl command-line tool to interact with the MicroK8s cluster.
+
+The configuration file is needed for your cluster to properly connect to the API server. Without this file and the following configurations, when you try to deploy your cluster, the shell will return the following error:
+
+“Error: The connection to the server localhost:8080 was refused-did you specify the right host or port?”
+
+Once your ‘config’ file is created and in the correct directory, you can continue your configuration of your k8 environment
+
+Set your cluster name and connect to the correct URL for the Kubernetes API. Depending on when you are reading this article, the URL may have changed:
+
+kubectl config set-cluster my_web_server --server=https://127.0.0.1:16443 --insecure-skip-tls-verify=true
+Next, set a username and password. I used the user name ‘ubuntu’ and password of ‘123456789’.
+
+kubectl config set-credentials ubuntu --token=123456789
+Next, name our context. I choose ‘first_context’. Addtionally, you need to set the cluster name and username that you used in the previous steps.
+
+kubectl config set-context first_context --cluster=my_web_server --user=ubuntu
+Next, we set our current working context to our context name from our previous steps. The context determines which cluster, user, and namespace are used for subsequent ‘kubectl’ commands which we will soon use to create our first cluster.
+
+kubectl config use-context first_context
+Step 3 — Deploying our Kubernetes Cluster
+Finally, we get to the fun part! Actually launching our cluster. In order to launch a cluster, Kubernetes needs a valid YAML file configured to specs.
+
+In a previous article, I launched a docker stack using a docker compose file. I have converted that docker YAML into a Kubernetes YAML which will launch the following service pods:
+
+10 Apache Web Servers
+1 Postgres Database
+1 Postgres Replica Database
+4 Redis Caching Databases
+Here is the docker compose YAML:
+
+
+You will need to create your own YAML file into your instance file system using VIM or Nano.
+
+Once your YAML file is created and saved in your instance, run the following command exchanging my filename for the one you chose:
+
+sudo kubectl apply -f mydeployment.yaml
+Lastly to validate that your cluster is running, you can run the following command:
+
 
