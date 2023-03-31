@@ -81,8 +81,11 @@ First, let’s check to see if we have a valid configuration file. By default, M
 When I installed microK8s on my instance, I had no configuration file so I had to create one using the following commands:
 
 mkdir -p $HOME/.kube
+
 sudo cp -i /var/snap/microk8s/current/credentials/client.config $HOME/.kube/config #Creates a new configure file
+
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
 These commands create the $HOME/.kube directory if it does not already exist, copy the MicroK8s configuration file to the $HOME/.kube/config file, and change the owner of the $HOME/.kube/config file to the current user. This allows you to use the kubectl command-line tool to interact with the MicroK8s cluster.
 
 The configuration file is needed for your cluster to properly connect to the API server. Without this file and the following configurations, when you try to deploy your cluster, the shell will return the following error:
@@ -94,16 +97,21 @@ Once your ‘config’ file is created and in the correct directory, you can con
 Set your cluster name and connect to the correct URL for the Kubernetes API. Depending on when you are reading this article, the URL may have changed:
 
 kubectl config set-cluster my_web_server --server=https://127.0.0.1:16443 --insecure-skip-tls-verify=true
+
 Next, set a username and password. I used the user name ‘ubuntu’ and password of ‘123456789’.
 
 kubectl config set-credentials ubuntu --token=123456789
+
 Next, name our context. I choose ‘first_context’. Addtionally, you need to set the cluster name and username that you used in the previous steps.
 
 kubectl config set-context first_context --cluster=my_web_server --user=ubuntu
+
 Next, we set our current working context to our context name from our previous steps. The context determines which cluster, user, and namespace are used for subsequent ‘kubectl’ commands which we will soon use to create our first cluster.
 
 kubectl config use-context first_context
+
 Step 3 — Deploying our Kubernetes Cluster
+
 Finally, we get to the fun part! Actually launching our cluster. In order to launch a cluster, Kubernetes needs a valid YAML file configured to specs.
 
 In a previous article, I launched a docker stack using a docker compose file. I have converted that docker YAML into a Kubernetes YAML which will launch the following service pods:
