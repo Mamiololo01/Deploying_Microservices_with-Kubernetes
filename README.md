@@ -128,20 +128,12 @@ Step 3 — Deploying our Kubernetes Cluster
 
 Finally, we get to the fun part! Actually launching our cluster. In order to launch a cluster, Kubernetes needs a valid YAML file configured to specs.
 
-In a previous article, I launched a docker stack using a docker compose file. I have converted that docker YAML into a Kubernetes YAML which will launch the following service pods:
-
-10 Apache Web Servers
-1 Postgres Database
-1 Postgres Replica Database
-4 Redis Caching Databases
-Here is the docker compose YAML:
-
-
 You will need to create your own YAML file into your instance file system using VIM or Nano.
 
 Once your YAML file is created and saved in your instance, run the following command exchanging my filename for the one you chose:
 
 sudo kubectl apply -f mydeployment.yaml
+
 Lastly to validate that your cluster is running, you can run the following command:
 
 
