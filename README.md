@@ -122,6 +122,8 @@ kubectl config use-context first_context
 
 <img width="732" alt="Screenshot 2023-03-31 at 17 48 00" src="https://user-images.githubusercontent.com/67044030/229204614-ac660890-c51e-4669-812b-0f19965ffd23.png">
 
+<img width="670" alt="Screenshot 2023-03-31 at 17 48 27" src="https://user-images.githubusercontent.com/67044030/229204817-7e6677f5-3578-48ed-870a-8fbb11a99b31.png">
+
 Step 3 — Deploying our Kubernetes Cluster
 
 Finally, we get to the fun part! Actually launching our cluster. In order to launch a cluster, Kubernetes needs a valid YAML file configured to specs.
