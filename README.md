@@ -23,3 +23,18 @@ Knowledge of Docker containers including docker images
 Familiarity with AWS such as EC2, VPCs, subnetting, & security groups
 Experience with Infrastructure as Code (IaC) tools.
 Knowledge of Linux and CLI commands
+
+Step 1 —Launching our EC2 Instance
+
+We start by launching our EC2 instance via the console. I will be installing and utilizing commands for Ubuntu Linux. I will be installing MicroK8s which is a lightweight and fast Kubernetes distribution designed for developers.
+
+Note that MicroK8s requires minimum system requirements above AWS’s free-tier eligible instances:
+
+Ubuntu 16.04 LTS or later (or a compatible Linux distribution)
+At least 2 CPU cores
+At least 2GB of RAM
+At least 20GB of disk space
+
+For this reason, I will be deploying a t3.medium instance so that the installation and orcastration runs smoothly and as expected. When I tried running on a smaller instance the installation consistently failed.
+
+
