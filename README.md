@@ -63,6 +63,8 @@ microk8s — the name of the snap package being installed
 
 <img width="727" alt="Screenshot 2023-03-31 at 17 36 46" src="https://user-images.githubusercontent.com/67044030/229201238-3f0ba7c1-110c-42ff-af6c-b227c9d6bdab.png">
 
+<img width="710" alt="Screenshot 2023-03-31 at 17 37 15" src="https://user-images.githubusercontent.com/67044030/229201468-56ecce09-529c-4509-aca7-34209e29a988.png">
+
 Next, we will change our permissions to allow user “ubuntu” to run administrative MicroK8 commands without having to use the ‘sudo’ command
 
 In order for the these effects to take place, we must exit and re-enter our shell by logging out and back into our instance via SSH.
