@@ -61,6 +61,8 @@ install — the command used to install a snap package
 microk8s — the name of the snap package being installed
 — classic — an option that allows the package to access system resources and perform privilege operations, which makes it possible to install and run MicroK8s on the host operating system
 
+<img width="727" alt="Screenshot 2023-03-31 at 17 36 46" src="https://user-images.githubusercontent.com/67044030/229201238-3f0ba7c1-110c-42ff-af6c-b227c9d6bdab.png">
+
 Next, we will change our permissions to allow user “ubuntu” to run administrative MicroK8 commands without having to use the ‘sudo’ command
 
 In order for the these effects to take place, we must exit and re-enter our shell by logging out and back into our instance via SSH.
