@@ -90,6 +90,8 @@ sudo cp -i /var/snap/microk8s/current/credentials/client.config $HOME/.kube/conf
 
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
+
+
 These commands create the $HOME/.kube directory if it does not already exist, copy the MicroK8s configuration file to the $HOME/.kube/config file, and change the owner of the $HOME/.kube/config file to the current user. This allows you to use the kubectl command-line tool to interact with the MicroK8s cluster.
 
 The configuration file is needed for your cluster to properly connect to the API server. Without this file and the following configurations, when you try to deploy your cluster, the shell will return the following error:
@@ -101,6 +103,8 @@ Once your ‘config’ file is created and in the correct directory, you can con
 Set your cluster name and connect to the correct URL for the Kubernetes API. Depending on when you are reading this article, the URL may have changed:
 
 kubectl config set-cluster my_web_server --server=https://127.0.0.1:16443 --insecure-skip-tls-verify=true
+
+<img width="733" alt="Screenshot 2023-03-31 at 17 46 02" src="https://user-images.githubusercontent.com/67044030/229203855-1c870e45-2e75-4889-afcb-8e64b93328cf.png">
 
 Next, set a username and password. I used the user name ‘ubuntu’ and password of ‘123456789’.
 
