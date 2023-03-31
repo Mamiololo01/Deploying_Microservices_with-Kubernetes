@@ -78,6 +78,8 @@ Once we log back in, we next need to continue our configuration of our Kubernete
 
 First, let’s check to see if we have a valid configuration file. By default, MicroK8s does not install with one. We can check if this is our case by running the “kubectl config view” command:
 
+<img width="579" alt="Screenshot 2023-03-31 at 17 41 48" src="https://user-images.githubusercontent.com/67044030/229203367-b5ac237d-6719-4bb4-bfb1-d40b92a84e4a.png">
+
 When I installed microK8s on my instance, I had no configuration file so I had to create one using the following commands:
 
 mkdir -p $HOME/.kube
