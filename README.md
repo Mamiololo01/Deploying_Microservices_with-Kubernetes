@@ -18,10 +18,15 @@ Overall, the use of Kubernetes for managing micro-services can provide businesse
 If you’re new to Kubernetes and looking for a way to get started, then this tutorial is for you. I will walk you thru step-by-step everything you need to deploy your first cluster
 
 Pre-Requisites
+
 Basic knowledge of Kubernetes including concepts such as Pods, Services, Deployments, and Replication Controllers
+
 Knowledge of Docker containers including docker images
+
 Familiarity with AWS such as EC2, VPCs, subnetting, & security groups
+
 Experience with Infrastructure as Code (IaC) tools.
+
 Knowledge of Linux and CLI commands
 
 Step 1 —Launching our EC2 Instance
@@ -31,8 +36,11 @@ We start by launching our EC2 instance via the console. I will be installing and
 Note that MicroK8s requires minimum system requirements above AWS’s free-tier eligible instances:
 
 Ubuntu 16.04 LTS or later (or a compatible Linux distribution)
+
 At least 2 CPU cores
+
 At least 2GB of RAM
+
 At least 20GB of disk space
 
 For this reason, I will be deploying a t3.medium instance so that the installation and orcastration runs smoothly and as expected. When I tried running on a smaller instance the installation consistently failed.
@@ -56,9 +64,13 @@ Once our instance is created, we need to connect to it, begin updating our packa
 Once in our shell, we need to update our packages and install microK8s. The “sudo snap install microk8s — classic” command does the following:
 
 sudo — runs the command with administrative privileges
+
 snap — snap packages are self-contained software that includes all dependencies
+
 install — the command used to install a snap package
+
 microk8s — the name of the snap package being installed
+
 — classic — an option that allows the package to access system resources and perform privilege operations, which makes it possible to install and run MicroK8s on the host operating system
 
 <img width="727" alt="Screenshot 2023-03-31 at 17 36 46" src="https://user-images.githubusercontent.com/67044030/229201238-3f0ba7c1-110c-42ff-af6c-b227c9d6bdab.png">
@@ -74,6 +86,7 @@ Next, we will change our permissions to allow user “ubuntu” to run administr
 In order for the these effects to take place, we must exit and re-enter our shell by logging out and back into our instance via SSH.
 
 Step 2 — Setting up our IDE on our Instance for MicroK8s
+
 Once we log back in, we next need to continue our configuration of our Kubernetes environment
 
 First, let’s check to see if we have a valid configuration file. By default, MicroK8s does not install with one. We can check if this is our case by running the “kubectl config view” command:
@@ -89,8 +102,6 @@ mkdir -p $HOME/.kube
 sudo cp -i /var/snap/microk8s/current/credentials/client.config $HOME/.kube/config #Creates a new configure file
 
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
-
 
 These commands create the $HOME/.kube directory if it does not already exist, copy the MicroK8s configuration file to the $HOME/.kube/config file, and change the owner of the $HOME/.kube/config file to the current user. This allows you to use the kubectl command-line tool to interact with the MicroK8s cluster.
 
